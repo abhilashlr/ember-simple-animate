@@ -10,8 +10,8 @@ const FadeInModifier = Modifier.extend({
     'animate:easing': animationTimingFunction,
     'animate:duration': duration
   }) {
-    let initialAnimationDelay = duration.enter;
-    let animationDuration = duration.tween;
+    let initialAnimationDelay = (duration && duration.enter) || 0;
+    let animationDuration = (duration && duration.tween) || 400;
 
     init(this.element, {
       initialAnimationDelay,
@@ -53,7 +53,7 @@ function init(el, {
 }) {
   el.style.animationDelay = `${initialAnimationDelay}ms`;
   el.style.animationTimingFunction = animationTimingFunction || 'ease-in';
-  el.style.animationDuration = animationDuration || '400ms';
+  el.style.animationDuration = `${animationDuration}ms`;
 }
 
 function _elementClassNameModifier(el, delay = 0) {
