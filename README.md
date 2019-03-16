@@ -1,7 +1,7 @@
 ember-simple-animate
 ==============================================================================
 
-[Short description of the addon.]
+Animate your DOM with simple CSS based animations.
 
 Installation
 ------------------------------------------------------------------------------
@@ -14,9 +14,33 @@ ember install ember-simple-animate
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
+#### Fade in
+```html
+Some text goes here 
+<span {{fade-in
+  animate:crossFadeOnChange=true
+  animate:duration=(hash enter=400 tween=600)
+  animate:easing="ease-in"}}>
 
+  {{changingPropertyValue}}
 
+</span>
+
+<button 
+  onclick={{action (mut changingPropertyValue) true)}}>
+  Change
+</button>
+```
+
+* `animate:crossFadeOnChange`: `Boolean`, Whenever text change takes place, applies cross fade transition. `Default: false`
+* `animate:duration`: `Object`, Takes `enter` and `tween` as 2 properties. Enter is for delaying the start of appearance initially by 'x'ms. Tween is for animation duration during a text content change.
+* `animate:easing`: `String`, Takes any valid CSS animation function. ('ease-in', 'ease-in-out', 'ease-out', 'cubic-bezier')
+
+---
+
+NOTE: Since these are CSS based animations, while using this addon, you can define it as common CSS animations for the class applied instead of passing properties every time.
+
+----
 Contributing
 ------------------------------------------------------------------------------
 
