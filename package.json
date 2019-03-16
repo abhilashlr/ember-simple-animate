@@ -1,13 +1,18 @@
 {
   "name": "ember-simple-animate",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "Simple ember animate addon for CSS based animations",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "animations",
+    "ember-simple-animate",
+    "ember-animate",
+    "css",
+    "animate"
   ],
-  "repository": "",
+  "repository": "https://github.com/abhilashlr/ember-simple-animate",
   "license": "MIT",
-  "author": "",
+  "author": "Abhilash L R",
   "directories": {
     "doc": "doc",
     "test": "tests"
