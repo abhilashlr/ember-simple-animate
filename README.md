@@ -38,6 +38,29 @@ Some text goes here
 
 ---
 
+#### Slide in
+```html
+<span {{slide-in
+  animate:from="bottom"
+  animate:duration=(hash enter=400)}}>
+
+  Any text to be animated
+
+</span>
+<span {{slide-in
+  animate:duration=(hash enter=1200)}}>
+
+  Any text to be animated
+
+</span>
+```
+
+* `animate:from`: `String`, From where the animation of `slide-in` be started. `Default: left`
+* `animate:duration`: `Object`, `enter` is for delaying the start of animation initially by 'x'ms.
+* `animate:easing`: `String`, WIP
+
+---
+
 NOTE: Since these are CSS based animations, while using this addon, you can define it as common CSS animations for the class applied instead of passing properties every time.
 
 ----
