@@ -38,7 +38,7 @@ Use a `slide-out` effect if you want the DOM element to exit with a nice slide o
 * usage: Handles `leave`.
   * `leave` is to delay the initial start of animation.
   * `tween` is to set the animation duration for the slide out effect
-* default: `enter: 0`
+* default: `leave: 0`
 
 ### `easing`
 * type: `String`
