@@ -1,8 +1,8 @@
 import { Modifier } from 'ember-oo-modifiers';
 
-const SLIDE_IN_CSS_CLASS_NAME = 'slide-out';
+const SLIDE_OUT_CSS_CLASS_NAME = 'slide-out';
 
-const SlideInModifier = Modifier.extend({
+const SlideOutModifier = Modifier.extend({
   didUpdateArguments([], { // eslint-disable-line
     duration,
     easing: animationTimingFunction,
@@ -18,7 +18,7 @@ const SlideInModifier = Modifier.extend({
     let animationDuration = (duration && duration.tween) || 400;
     let animationName = to || 'left';
 
-    element.classList.add(SLIDE_IN_CSS_CLASS_NAME);
+    element.classList.add(SLIDE_OUT_CSS_CLASS_NAME);
 
     element.style.animationName = `slide-${animationName}`;
     element.style.animationDelay = `${animationDelay}ms`;
@@ -27,4 +27,4 @@ const SlideInModifier = Modifier.extend({
   }
 });
 
-export default Modifier.modifier(SlideInModifier);
+export default Modifier.modifier(SlideOutModifier);
