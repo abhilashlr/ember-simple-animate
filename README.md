@@ -3,6 +3,8 @@ ember-simple-animate
 
 Animate your DOM with simple CSS based animations.
 
+Read more on [documentation here](https://abhilashlr.github.io/ember-simple-animate/)
+
 ---
 
 NOTE: Since these are CSS based animations, while using this addon, you can define it as common CSS animations for the class applied instead of passing properties every time.
