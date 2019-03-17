@@ -1,13 +1,33 @@
 import { Modifier } from 'ember-oo-modifiers';
+import deprecation from 'ember-simple-animate/utils/deprecation';
 
 const SLIDE_IN_CSS_CLASS_NAME = 'slide-in';
 
 const SlideInModifier = Modifier.extend({
   didInsertElement([], { // eslint-disable-line
-    'animate:duration': duration,
-    'animate:easing': animationTimingFunction,
-    'animate:from': from
+    duration,
+    easing: animationTimingFunction,
+    from,
+    'animate:from': deprecatedFrom,
+    'animate:easing': deprecatedEasing,
+    'animate:duration': deprecatedDuration
   }) {
+    if (deprecatedFrom) {
+      deprecation('animate:from', 'from');
+
+      from = deprecatedFrom;
+    }
+    if (deprecatedEasing) {
+      deprecation('animate:easing', 'easing');
+
+      animationTimingFunction = deprecatedEasing;
+    }
+    if (deprecatedDuration) {
+      deprecation('animate:duration', 'duration');
+
+      duration = deprecatedDuration;
+    }
+
     let { element } = this;
     let animationDelay = (duration && duration.enter) || 0;
     let animationDuration = (duration && duration.tween) || 400;

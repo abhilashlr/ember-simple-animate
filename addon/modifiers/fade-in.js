@@ -1,15 +1,35 @@
 import { Modifier } from 'ember-oo-modifiers';
 import { set } from '@ember/object';
+import deprecation from 'ember-simple-animate/utils/deprecation';
 import whichAnimationEvent from 'ember-simple-animate/utils/which-animation-event';
 
 const FADE_IN_CSS_CLASS_NAME = 'fade-in';
 
 const FadeInModifier = Modifier.extend({
   didInsertElement([], { // eslint-disable-line
-    'animate:crossFadeOnChange': crossFadeOnChange,
-    'animate:easing': animationTimingFunction,
-    'animate:duration': duration
+    'animate:crossFadeOnChange': deprecatedCrossFadeOnChange,
+    'animate:easing': deprecatedEasing,
+    'animate:duration': deprecatedDuration,
+    crossFadeOnChange,
+    easing: animationTimingFunction,
+    duration
   }) {
+    if (deprecatedCrossFadeOnChange) {
+      deprecation('animate:crossFadeOnChange', 'crossFadeOnChange');
+
+      crossFadeOnChange = deprecatedCrossFadeOnChange;
+    }
+    if (deprecatedEasing) {
+      deprecation('animate:easing', 'easing');
+
+      animationTimingFunction = deprecatedEasing;
+    }
+    if (deprecatedDuration) {
+      deprecation('animate:duration', 'duration');
+
+      duration = deprecatedDuration;
+    }
+
     let initialAnimationDelay = (duration && duration.enter) || 0;
     let animationDuration = (duration && duration.tween) || 400;
 
