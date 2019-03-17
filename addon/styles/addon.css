@@ -13,13 +13,19 @@
   }
 }
 
-.slide-in {
-  animation: slide-in-left;
+.slide-in,
+.slide-out {
+  animation: slide-left;
   animation-fill-mode: forwards;
   opacity: 0;
 }
 
-@keyframes slide-in-left {
+.slide-out {
+  animation-direction: reverse;
+  opacity: 1;
+}
+
+@keyframes slide-left {
   0% {
     opacity: 0;
     transform: translateX(-100px);
@@ -30,7 +36,7 @@
   }
 }
 
-@keyframes slide-in-bottom {
+@keyframes slide-bottom {
   0% {
     opacity: 0;
     transform: translateY(100px);
@@ -41,7 +47,7 @@
   }
 }
 
-@keyframes slide-in-top {
+@keyframes slide-top {
   0% {
     opacity: 0;
     transform: translateY(-100px);
@@ -52,7 +58,7 @@
   }
 }
 
-@keyframes slide-in-right {
+@keyframes slide-right {
   0% {
     opacity: 0;
     transform: translateX(100px);

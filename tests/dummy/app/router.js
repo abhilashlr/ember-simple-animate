@@ -13,6 +13,7 @@ Router.map(function() {
     this.route('components', function() {
       this.route('fade-in');
       this.route('slide-in');
+      this.route('slide-out');
     });
   });
 

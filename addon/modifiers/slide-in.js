@@ -35,7 +35,7 @@ const SlideInModifier = Modifier.extend({
 
     element.classList.add(SLIDE_IN_CSS_CLASS_NAME);
 
-    element.style.animationName = `slide-in-${animationName}`;
+    element.style.animationName = `slide-${animationName}`;
     element.style.animationDelay = `${animationDelay}ms`;
     element.style.animationDuration = `${animationDuration}ms`;
     element.style.animationFunction = animationTimingFunction;

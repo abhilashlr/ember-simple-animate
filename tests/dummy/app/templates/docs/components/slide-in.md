@@ -63,9 +63,9 @@ Use a `slide-in` effect if you want the DOM element to appear with a nice slide 
 * type: `Object`
 * usage: Handles `enter`.
   * `enter` is to delay the initial start of appearance.
-  * `tween` is WIP.
+  * `tween` is to set the animation duration for the slide in effect
 * default: `enter: 0`
 
 ### `easing`
 * type: `String`
-* usage: WIP
+* usage: Any valid CSS animation function. ('ease-in', 'ease-in-out', 'ease-out', 'cubic-bezier')
