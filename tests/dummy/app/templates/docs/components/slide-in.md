@@ -32,17 +32,17 @@ Use a `slide-in` effect if you want the DOM element to appear with a nice slide 
 
   <p>
     <h3 {{slide-in duration=(hash enter=300)}}>What is Lorem Ipsum?</h3>
-    <div {{slide-in duration=(hash enter=600)}}>
+    <div>
       Lorem Ipsum is simply dummy
-      <strong
-        {{fade-in crossFadeOnChange=true}}>
+      <span style="display:inline-block"
+        {{slide-in from='right' crossSlideInOnChange=true}}>
         {{dynamicText}}
-      </strong>
+      </span>
       of the printing and typesetting industry.
-      <div><button class="docs-btn" onclick={{action "changeText"}}>
-        Change value
-      </button></div>
     </div>
+    <button class="docs-btn" onclick={{action "changeText"}} {{slide-in from="bottom" duration=(hash enter=1200)}}>
+      Change value
+    </button>
   </p>
 {{! END-SNIPPET }}
 

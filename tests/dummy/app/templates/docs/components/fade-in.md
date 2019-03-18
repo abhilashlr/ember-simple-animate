@@ -30,6 +30,28 @@ Use a `fade-in` effect if you want the DOM element to appear with a nice fade in
 
 {{docs-snippet name='fade-in.hbs'}}
 
+## Demo 2
+
+{{#docs-demo class="docs-p-5" as |demo|}}
+
+{{! BEGIN-SNIPPET fade-in-2.hbs }}
+  <span {{fade-in}}>
+    Random number: 
+  </span>
+  <span
+    {{fade-in 
+      crossFadeOnChange=true
+      duration=(hash tween=800)
+      easing="ease-in"}}>
+    {{randomNumber}}
+  </span>
+{{! END-SNIPPET }}
+
+{{/docs-demo}}
+
+## Code
+
+{{docs-snippet name='fade-in-2.hbs'}}
 ## Options
 
 ### `crossFadeOnChange`
