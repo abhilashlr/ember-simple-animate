@@ -3952,8 +3952,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.default=t.default.extend()}),
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=t.default.extend()}),define("ember-cli-addon-docs/adapters/project",["exports","ember-cli-addon-docs/adapters/-addon-docs"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=t.default.extend()})
 define("ember-cli-addon-docs/addon-files",["exports"],function(e){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.default=[".gitkeep","modifiers/fade-in.js","modifiers/slide-in-out.js","modifiers/slide-in.js","modifiers/slide-out.js","styles/addon.css","utils/deprecation.js","utils/which-animation-event.js"]}),define("ember-cli-addon-docs/app-files",["exports"],function(e){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.default=["app.js","controllers/.gitkeep","controllers/docs/components/fade-in.js","controllers/docs/components/slide-in-out.js","controllers/docs/components/slide-in.js","index.html","resolver.js","router.js","routes/.gitkeep","styles/app.css","templates/application.hbs","templates/docs.hbs","templates/docs/components/fade-in.md","templates/docs/components/slide-in-out.md","templates/docs/components/slide-in.md","templates/docs/components/slide-out.md","templates/docs/index.md","templates/docs/usage.md","templates/index.hbs","templates/not-found.hbs"]}),define("ember-cli-addon-docs/breakpoints",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=[".gitkeep","modifiers/fade-in.js","modifiers/slide-in.js","modifiers/slide-out.js","styles/addon.css","utils/deprecation.js","utils/which-animation-event.js"]}),define("ember-cli-addon-docs/app-files",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=["app.js","controllers/.gitkeep","controllers/docs/components/fade-in.js","controllers/docs/components/slide-in.js","index.html","resolver.js","router.js","routes/.gitkeep","styles/app.css","templates/application.hbs","templates/docs.hbs","templates/docs/components/fade-in.md","templates/docs/components/slide-in.md","templates/docs/components/slide-out.md","templates/docs/index.md","templates/docs/usage.md","templates/index.hbs","templates/not-found.hbs"]}),define("ember-cli-addon-docs/breakpoints",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default={mobile:"(max-width: 767px)",tablet:"(min-width: 768px) and (max-width: 991px)",desktop:"(min-width: 992px) and (max-width: 1200px)"}}),define("ember-cli-addon-docs/components/api/x-class/component",["exports","ember-cli-addon-docs/utils/computed","ember-cli-addon-docs/components/api/x-class/template"],function(e,t,r){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Component.extend({layout:r.default,tagName:"",showInherited:!1,showProtected:!1,showPrivate:!1,showDeprecated:!1,accessors:(0,t.memberFilter)("class","accessors"),methods:(0,t.memberFilter)("class","methods"),fields:(0,t.memberFilter)("class","fields"),hasToggles:Ember.computed.or("component.hasInherited","component.hasProtected","component.hasPrivate","component.hasDeprecated"),hasContents:Ember.computed("class",{get:function(){var e=this.get("class")
 return e.get("allFields.length")>0||e.get("allAccessors.length")>0||e.get("allMethods.length")>0}}),actions:{updateFilter:function(e,t){var r=t.target.checked
@@ -6257,43 +6257,39 @@ if(e&&e.routerScroll){var t=e.routerScroll.scrollElement,r=e.routerScroll.target
 "string"===Ember.typeOf(t)&&Ember.set(this,"scrollElement",t),"string"===Ember.typeOf(r)&&Ember.set(this,"targetElement",r),!0===e.routerScroll.delayScrollTop&&Ember.set(this,"delayScrollTop",!0)}}})
 e.default=t}),define("ember-simple-animate/modifiers/fade-in",["exports","ember-oo-modifiers","ember-simple-animate/utils/deprecation","ember-simple-animate/utils/which-animation-event"],function(e,t,r,n){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0})
-var i="fade-in",o=t.Modifier.extend({didInsertElement:function(e,t){var n,i=this,o=(n=e,Array.isArray(n)||Array.from(n),t["animate:crossFadeOnChange"]),a=t["animate:easing"],u=t["animate:duration"],l=t.crossFadeOnChange,c=t.easing,d=t.duration
-o&&((0,r.default)("animate:crossFadeOnChange","crossFadeOnChange"),l=o),a&&((0,r.default)("animate:easing","easing"),c=a),u&&((0,r.default)("animate:duration","duration"),d=u)
-var p=d&&d.enter||0,h=d&&d.tween||400
-if(function(e,t){var r=t.initialAnimationDelay,n=t.animationTimingFunction,i=t.animationDuration
-e.style.animationDelay=r+"ms",e.style.animationTimingFunction=n||"ease-in",e.style.animationDuration=i+"ms"}(this.element,{initialAnimationDelay:p,animationTimingFunction:c,animationDuration:h}),s(this.element,h),l){var f=new MutationObserver(function(){i.element.style.animationDelay="0ms",s(i.element,h)})
-f.observe(this.element,{characterData:!0,subtree:!0}),Ember.set(this,"observer",f)}},willDestroyElement:function(){this.element.classList.remove(i),this.observer&&this.observer.disconnect()}})
-function s(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:0
-e.classList.add(i)
-var r=(0,n.default)(e)
-e.addEventListener(r,function(){e.style.animationDuration=t+"ms",e.classList.remove(i)},!0)}e.default=t.Modifier.modifier(o)}),define("ember-simple-animate/modifiers/slide-in-out",["exports","ember-oo-modifiers","ember-simple-animate/utils/which-animation-event"],function(e,t,r){"use strict"
+var i=t.Modifier.extend({didInsertElement:function(e,t){var n,i=this,o=(n=e,Array.isArray(n)||Array.from(n),t["animate:crossFadeOnChange"]),s=t["animate:easing"],a=t["animate:duration"],u=t.crossFadeOnChange,l=t.easing,c=t.duration
+if(o&&((0,r.default)("animate:crossFadeOnChange","crossFadeOnChange"),u=o),s&&((0,r.default)("animate:easing","easing"),l=s),a&&((0,r.default)("animate:duration","duration"),c=a),Ember.setProperties(this,{animationDuration:c&&c.tween||400,animationTimingFunction:l||"ease-in",crossFadeOnChange:u,initialAnimationDelay:c&&c.enter||0}),this._elementClassNameModifier(),u){var d=new MutationObserver(function(){i._elementClassNameModifier()})
+d.observe(this.element,{characterData:!0,subtree:!0}),Ember.set(this,"observer",d)}},willDestroyElement:function(){this.element.classList.remove("fade-in"),this.observer&&this.observer.disconnect()},_animateListener:function(){var e=this.element
+e.classList.remove("fade-in"),e.style.animationDelay="0ms",this._removeEventListeners()},_elementClassNameModifier:function(){this._setStyle()
+var e=this.element
+e.classList.add("fade-in")
+var t=(0,n.default)()
+e.addEventListener(t,this._animateListener.bind(this))},_setStyle:function(){var e=this.element
+e.style.animationDelay=this.initialAnimationDelay+"ms",e.style.animationTimingFunction=this.animationTimingFunction,e.style.animationDuration=this.animationDuration+"ms"},_removeEventListeners:function(){var e=(0,n.default)()
+this.element.removeEventListener(e,this._animateListener,!1)}})
+e.default=t.Modifier.modifier(i)}),define("ember-simple-animate/modifiers/slide-in",["exports","ember-oo-modifiers","ember-simple-animate/utils/deprecation","ember-simple-animate/utils/which-animation-event"],function(e,t,r,n){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0})
-var n=t.Modifier.extend({didInsertElement:function(e,t){var r,n=this,o=(r=e,Array.isArray(r)||Array.from(r),t.duration),s=t.easing,a=t.from
-Ember.setProperties(this,{animationDelay:o&&o.leave||0,animationDuration:o&&o.tween||400,animationName:a||"left",animationTimingFunction:s||"ease-in"}),i(this,"slide-in")
-var u=new MutationObserver(function(){i(n,"slide-in")})
-u.observe(this.element,{characterData:!0,subtree:!0}),Ember.set(this,"observer",u)}})
-function i(e,t){var n=e.element;(function(e){var t=e.element
-t.style.animationName="slide-"+e.animationName,t.style.animationDelay=e.animationDelay+"ms",t.style.animationDuration=e.animationDuration+"ms",t.style.animationFunction=e.animationTimingFunction})(e),n.classList.add(t)
-var i=(0,r.default)()
-n.addEventListener(i,function(){(function(e,t){e.classList.remove(t),e.style.animationName="none"})(n,t)})}e.default=t.Modifier.modifier(n)}),define("ember-simple-animate/modifiers/slide-in",["exports","ember-oo-modifiers","ember-simple-animate/utils/deprecation","ember-simple-animate/utils/which-animation-event"],function(e,t,r,n){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0})
-var i=t.Modifier.extend({didInsertElement:function(e,t){var n,i=this,s=(n=e,Array.isArray(n)||Array.from(n),t.duration),a=t.easing,u=t.from,l=t.crossSlideInOnChange,c=t["animate:from"],d=t["animate:easing"],p=t["animate:duration"]
-if(c&&((0,r.default)("animate:from","from"),u=c),d&&((0,r.default)("animate:easing","easing"),a=d),p&&((0,r.default)("animate:duration","duration"),s=p),Ember.setProperties(this,{animationDelay:s&&s.enter||0,animationDuration:s&&s.tween||400,animationName:u||"left",animationTimingFunction:a||"ease-in"}),o(this,"slide-in"),l){var h=new MutationObserver(function(){o(i,"slide-in")})
-h.observe(this.element,{characterData:!0,subtree:!0}),Ember.set(this,"observer",h)}}})
-function o(e,t){var r=e.element;(function(e){var t=e.element
-t.style.animationName="slide-"+e.animationName,t.style.animationDelay=e.animationDelay+"ms",t.style.animationDuration=e.animationDuration+"ms",t.style.animationFunction=e.animationTimingFunction})(e),r.classList.add(t)
-var i=(0,n.default)(r)
-r.addEventListener(i,function(){(function(e,t){e.classList.remove(t),e.style.animationName="none"})(r,t)},!0)}e.default=t.Modifier.modifier(i)}),define("ember-simple-animate/modifiers/slide-out",["exports","ember-oo-modifiers"],function(e,t){"use strict"
+var i=t.Modifier.extend({didInsertElement:function(e,t){var n,i=this,o=(n=e,Array.isArray(n)||Array.from(n),t.duration),s=t.easing,a=t.from,u=t.crossSlideInOnChange,l=t["animate:from"],c=t["animate:easing"],d=t["animate:duration"]
+if(l&&((0,r.default)("animate:from","from"),a=l),c&&((0,r.default)("animate:easing","easing"),s=c),d&&((0,r.default)("animate:duration","duration"),o=d),Ember.setProperties(this,{animationDelay:o&&o.enter||0,animationDuration:o&&o.tween||400,animationName:"slide-"+(a||"left"),animationTimingFunction:s||"ease-in"}),this._elementClassNameModifier(),u){var p=new MutationObserver(function(){i._elementClassNameModifier()})
+p.observe(this.element,{characterData:!0,subtree:!0}),Ember.set(this,"observer",p)}},_animateListener:function(){var e=this.element
+e.classList.remove("slide-in"),e.style.animationName="none",e.style.animationDelay="0ms",this._removeEventListeners()},_elementClassNameModifier:function(){this._setStyle()
+var e=this.element
+e.classList.add("slide-in")
+var t=(0,n.default)()
+e.addEventListener(t,this._animateListener.bind(this))},_setStyle:function(){var e=this.element
+e.style.animationName=this.animationName,e.style.animationDelay=this.animationDelay+"ms",e.style.animationDuration=this.animationDuration+"ms",e.style.animationFunction=this.animationTimingFunction},_removeEventListeners:function(){var e=(0,n.default)()
+this.element.removeEventListener(e,this._animateListener,!1)}})
+e.default=t.Modifier.modifier(i)}),define("ember-simple-animate/modifiers/slide-out",["exports","ember-oo-modifiers"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0})
 var r=t.Modifier.extend({didUpdateArguments:function(e,t){r=e,Array.isArray(r)||Array.from(r)
 var r,n=t.duration,i=t.easing,o=t.start,s=t.to
 if(o){var a=this.element,u=n&&n.leave||0,l=n&&n.tween||400,c=s||"left"
 a.classList.add("slide-out"),a.style.animationName="slide-"+c,a.style.animationDelay=u+"ms",a.style.animationDuration=l+"ms",a.style.animationFunction=i}}})
 e.default=t.Modifier.modifier(r)}),define("ember-simple-animate/utils/deprecation",["exports"],function(e){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(e,t){console.warn("Using `"+e+"` is deprecated. Instead use `"+t+"`")}})
-define("ember-simple-animate/utils/which-animation-event",["exports"],function(e){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(e){var t=void 0,r={animation:"animationend",OAnimation:"oAnimationEnd",MozAnimation:"animationend",WebkitAnimation:"webkitAnimationEnd"}
-for(t in r)if(void 0!==e.style[t])return r[t]}}),define("ember-svg-jar/inlined/addon-docs-pen",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(e,t){console.warn("Using `"+e+"` is deprecated. Instead use `"+t+"`")}}),define("ember-simple-animate/utils/which-animation-event",["exports"],function(e){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(){var e=void 0,t=document.createElement("fakeElement"),r={animation:"animationend",OAnimation:"oAnimationEnd",MozAnimation:"animationend",WebkitAnimation:"webkitAnimationEnd"}
+for(e in r)if(void 0!==t.style[e])return r[e]}})
+define("ember-svg-jar/inlined/addon-docs-pen",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default={content:'<title>Group 2 Copy 2</title><g fill-rule="evenodd"><path d="M206.897 58c-.484 3.423-2.667 6-6.397 6-2.547 0-4.373-1.202-5.429-3.054C157 67.738 122.832 85.927 96.164 111.89 69.004 94.1 37.063 83.1 2.71 81.27A162.4 162.4 0 0 1 .897 57c0-9.006.735-17.813 2.14-26.346C36.881 28.616 68.344 17.673 95.152.118c26.814 26.491 61.364 45.057 99.92 51.936C196.126 50.202 197.952 49 200.5 49c3.73 0 5.913 2.577 6.397 6H95v3h111.897z"/><g transform="translate(19.116 29.756)"><circle cx="26.12" cy="26.12" r="26.12"/><path d="M39.387 28.863s-7.943 5.63-13.164 5.705c-5.22.075-4.69-3.284-4.69-3.284s19.141-6.5 13.92-19.336c-2.346-3.302-5.07-4.342-8.926-4.266-3.86.075-8.645 2.41-11.749 9.316-1.483 3.294-2.022 6.419-2.325 8.785 0 0-3.348.679-5.165-.823-1.817-1.5-2.75 0-2.75 0s-3.12 3.942-.016 5.144c3.104 1.2 7.943 1.762 7.943 1.762.44 2.102 1.736 5.671 5.516 8.518 5.673 4.278 16.567-.393 16.567-.393s2.374-.894 4.463-2.487c3.041-2.649 2.614-10.707.376-8.64zm-18.633-3.62c.224-8.815 6.048-12.667 8.066-10.741 2.017 1.926 1.27 6.074-2.541 8.667-3.807 2.592-5.525 2.074-5.525 2.074z" fill-rule="nonzero"/></g></g>',attrs:{width:"207",height:"112",viewBox:"0 0 207 112",xmlns:"http://www.w3.org/2000/svg"}}}),define("ember-svg-jar/inlined/api-item",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default={content:'<title>icons/class</title><path d="M13.026 30.176a6.4 6.4 0 0 0 1.128-.13 4.337 4.337 0 0 0 1.345-.5c.434-.245.81-.57 1.128-.975.318-.405.478-.926.478-1.562v-8.937c0-1.013.202-1.895.607-2.647.405-.752.897-1.374 1.475-1.865a5.96 5.96 0 0 1 1.822-1.085c.636-.231 1.186-.347 1.649-.347h3.948v3.905H24.22c-.55 0-.984.094-1.302.282a2.004 2.004 0 0 0-.738.737 2.618 2.618 0 0 0-.325.998 8.58 8.58 0 0 0-.065 1.02v8.46c0 .867-.174 1.59-.52 2.168-.348.579-.76 1.034-1.237 1.367a5.42 5.42 0 0 1-1.475.738c-.506.159-.933.253-1.28.282v.086c.347.03.774.102 1.28.217.506.116.998.34 1.475.673.477.332.89.81 1.236 1.431.347.622.521 1.454.521 2.495v8.2c0 .318.022.658.065 1.02.043.36.152.693.325.997.174.304.42.55.738.737.318.188.752.282 1.302.282h2.386v3.905h-3.948c-.463 0-1.013-.116-1.649-.347a5.96 5.96 0 0 1-1.822-1.085c-.578-.491-1.07-1.113-1.475-1.865s-.607-1.634-.607-2.647v-8.59c0-.694-.16-1.272-.478-1.735a3.65 3.65 0 0 0-1.128-1.085 4.455 4.455 0 0 0-1.345-.542c-.462-.101-.838-.152-1.128-.152v-3.904zm38.092 3.904c-.319 0-.709.05-1.172.152a5.217 5.217 0 0 0-1.345.499c-.434.231-.802.55-1.106.954-.304.405-.456.926-.456 1.562v8.937c0 1.013-.202 1.895-.607 2.647-.405.752-.897 1.374-1.475 1.865a5.96 5.96 0 0 1-1.822 1.085c-.636.231-1.186.347-1.649.347h-3.948v-3.905h2.386c.55 0 .984-.094 1.302-.282.318-.188.564-.433.738-.737.173-.304.282-.636.325-.998a8.58 8.58 0 0 0 .065-1.02v-8.46c0-.867.174-1.59.52-2.168.348-.579.76-1.034 1.237-1.367a4.96 4.96 0 0 1 1.475-.716 11.98 11.98 0 0 1 1.28-.304v-.086a9.443 9.443 0 0 1-1.28-.217 4.22 4.22 0 0 1-1.475-.673c-.477-.332-.89-.81-1.236-1.431-.347-.622-.521-1.454-.521-2.495v-8.2a8.58 8.58 0 0 0-.065-1.02 2.618 2.618 0 0 0-.325-.997 2.004 2.004 0 0 0-.738-.737c-.318-.188-.752-.282-1.302-.282h-2.386v-3.905h3.948c.463 0 1.013.116 1.649.347a5.96 5.96 0 0 1 1.822 1.085c.578.491 1.07 1.113 1.475 1.865s.607 1.634.607 2.647v8.59c0 .694.152 1.272.456 1.735.304.463.672.824 1.106 1.085.434.26.882.44 1.345.542.463.101.853.152 1.172.152v3.904z" fill-rule="evenodd"/>',attrs:{width:"64",height:"64",viewBox:"0 0 64 64",xmlns:"http://www.w3.org/2000/svg"}}}),define("ember-svg-jar/inlined/caret",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default={content:'<title>caret</title><path d="M32 41L15 24h35z" fill-rule="evenodd"/>',attrs:{width:"64",height:"64",viewBox:"0 0 64 64",xmlns:"http://www.w3.org/2000/svg"}}}),define("ember-svg-jar/inlined/check",["exports"],function(e){"use strict"
@@ -6378,10 +6374,10 @@ try{for(var s,a=e[Symbol.iterator]();!(n=(s=a.next()).done)&&(r.push(s.value),!t
 throw new TypeError("Invalid attempt to destructure non-iterable instance")}}()
 function r(e,r){var n=t(e,2),i=n[0],o=n[1]
 return r.forceNumber&&("number"!=typeof i&&(i=Number(i)),"number"!=typeof o&&(o=Number(o))),i<=o}e.default=Ember.Helper.helper(r)}),define("ember-truth-helpers/helpers/not-equal",["exports"],function(e){"use strict"
-function t(e){return e[0]!==e[1]}Object.defineProperty(e,"__esModule",{value:!0}),e.notEqualHelper=t,e.default=Ember.Helper.helper(t)})
-define("ember-truth-helpers/helpers/not",["exports","ember-truth-helpers/utils/truth-convert"],function(e,t){"use strict"
+function t(e){return e[0]!==e[1]}Object.defineProperty(e,"__esModule",{value:!0}),e.notEqualHelper=t,e.default=Ember.Helper.helper(t)}),define("ember-truth-helpers/helpers/not",["exports","ember-truth-helpers/utils/truth-convert"],function(e,t){"use strict"
 function r(e){for(var r=0,n=e.length;r<n;r++)if(!0===(0,t.default)(e[r]))return!1
-return!0}Object.defineProperty(e,"__esModule",{value:!0}),e.not=r,e.default=Ember.Helper.helper(r)}),define("ember-truth-helpers/helpers/or",["exports","ember-truth-helpers/utils/truth-convert"],function(e,t){"use strict"
+return!0}Object.defineProperty(e,"__esModule",{value:!0}),e.not=r,e.default=Ember.Helper.helper(r)})
+define("ember-truth-helpers/helpers/or",["exports","ember-truth-helpers/utils/truth-convert"],function(e,t){"use strict"
 function r(e){for(var r=0,n=e.length;r<n;r++)if(!0===(0,t.default)(e[r]))return e[r]
 return e[e.length-1]}Object.defineProperty(e,"__esModule",{value:!0}),e.or=r,e.default=Ember.Helper.helper(r)}),define("ember-truth-helpers/helpers/xor",["exports","ember-truth-helpers/utils/truth-convert"],function(e,t){"use strict"
 function r(e){return(0,t.default)(e[0])!==(0,t.default)(e[1])}Object.defineProperty(e,"__esModule",{value:!0}),e.xor=r,e.default=Ember.Helper.helper(r)}),define("ember-truth-helpers/utils/truth-convert",["exports"],function(e){"use strict"
@@ -6556,9 +6552,9 @@ if(Symbol.iterator in Object(e))return function(e,t){var r=[],n=!0,i=!1,o=void 0
 try{for(var s,a=e[Symbol.iterator]();!(n=(s=a.next()).done)&&(r.push(s.value),!t||r.length!==t);n=!0);}catch(u){i=!0,o=u}finally{try{!n&&a.return&&a.return()}finally{if(i)throw o}}return r}(e,t)
 throw new TypeError("Invalid attempt to destructure non-iterable instance")}}()
 function n(e){var n=r(e,2),i=n[0],o=n[1]
-return(0,t.routeModel)((0,t.childRoute)(i,o)),i}e.default=Ember.Helper.helper(n)})
-define("liquid-fire/helpers/lf-or",["exports"],function(e){"use strict"
-function t(e){return e.reduce(function(e,t){return e||t},!1)}Object.defineProperty(e,"__esModule",{value:!0}),e.lfOr=t,e.default=Ember.Helper.helper(t)}),define("liquid-fire/index",["exports","liquid-fire/mixins/pausable","liquid-fire/transition-map","liquid-fire/animate","liquid-fire/promise","liquid-fire/mutation-observer"],function(e,t,r,n,i,o){"use strict"
+return(0,t.routeModel)((0,t.childRoute)(i,o)),i}e.default=Ember.Helper.helper(n)}),define("liquid-fire/helpers/lf-or",["exports"],function(e){"use strict"
+function t(e){return e.reduce(function(e,t){return e||t},!1)}Object.defineProperty(e,"__esModule",{value:!0}),e.lfOr=t,e.default=Ember.Helper.helper(t)})
+define("liquid-fire/index",["exports","liquid-fire/mixins/pausable","liquid-fire/transition-map","liquid-fire/animate","liquid-fire/promise","liquid-fire/mutation-observer"],function(e,t,r,n,i,o){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.MutationObserver=e.Promise=e.finish=e.timeRemaining=e.timeSpent=e.isAnimating=e.stop=e.animate=e.TransitionMap=e.Pausable=void 0,Object.defineProperty(e,"Pausable",{enumerable:!0,get:function(){return t.default}}),e.TransitionMap=r.default,e.animate=n.animate,e.stop=n.stop,e.isAnimating=n.isAnimating,e.timeSpent=n.timeSpent,e.timeRemaining=n.timeRemaining,e.finish=n.finish,e.Promise=i.default,e.MutationObserver=o.default}),define("liquid-fire/is-browser",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(){return"undefined"!=typeof window&&window&&"undefined"!=typeof document&&document}}),define("liquid-fire/mixins/pausable",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=Ember.Mixin.create({_transitionMap:Ember.inject.service("liquid-fire-transitions"),_initializeLiquidFirePauseable:Ember.on("init",function(){this._lfDefer=[]}),pauseLiquidFire:function(){var e=this.nearestWithProperty("_isLiquidChild")
@@ -6673,9 +6669,9 @@ var s=this
 if((0,t.default)()){var a=document.getElementsByTagName("html"),u=this.lookup(e)
 return r||(r={}),r=Ember.merge({duration:500,offset:0},r),window.$.Velocity(a,"scroll",r).then(function(){u.apply(s,i)})}}
 "function"==typeof Symbol&&Symbol.iterator}),define("liquid-fire/transitions/to-down",["exports","liquid-fire/transitions/move-over"],function(e,t){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(e){return t.default.call(this,"y",1,e)}})
-define("liquid-fire/transitions/to-left",["exports","liquid-fire/transitions/move-over"],function(e,t){"use strict"
-Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(e){return t.default.call(this,"x",-1,e)}}),define("liquid-fire/transitions/to-right",["exports","liquid-fire/transitions/move-over"],function(e,t){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(e){return t.default.call(this,"y",1,e)}}),define("liquid-fire/transitions/to-left",["exports","liquid-fire/transitions/move-over"],function(e,t){"use strict"
+Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(e){return t.default.call(this,"x",-1,e)}})
+define("liquid-fire/transitions/to-right",["exports","liquid-fire/transitions/move-over"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(e){return t.default.call(this,"x",1,e)}}),define("liquid-fire/transitions/to-up",["exports","liquid-fire/transitions/move-over"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(e){return t.default.call(this,"y",-1,e)}}),define("liquid-fire/transitions/wait",["exports"],function(e){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=function(e,t){for(var r=arguments.length,n=Array(r>2?r-2:0),i=2;i<r;i++)n[i-2]=arguments[i]
