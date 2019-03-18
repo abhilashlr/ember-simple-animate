@@ -1,5 +1,5 @@
 import { Modifier } from 'ember-oo-modifiers';
-import { set } from '@ember/object';
+import { set, setProperties } from '@ember/object';
 import deprecation from 'ember-simple-animate/utils/deprecation';
 import whichAnimationEvent from 'ember-simple-animate/utils/which-animation-event';
 
@@ -30,25 +30,21 @@ const FadeInModifier = Modifier.extend({
       duration = deprecatedDuration;
     }
 
-    let initialAnimationDelay = (duration && duration.enter) || 0;
-    let animationDuration = (duration && duration.tween) || 400;
-
-    init(this.element, {
-      initialAnimationDelay,
-      animationTimingFunction,
-      animationDuration
+    setProperties(this, {
+      animationDuration: (duration && duration.tween) || 400,
+      animationTimingFunction: animationTimingFunction || 'ease-in',
+      crossFadeOnChange,
+      initialAnimationDelay: (duration && duration.enter) || 0
     });
 
-    _elementClassNameModifier(this.element, animationDuration);
+    this._elementClassNameModifier();
 
     if (!crossFadeOnChange) {
       return;
     }
 
     let observer = new MutationObserver(() => {
-      this.element.style.animationDelay = '0ms';
-
-      _elementClassNameModifier(this.element, animationDuration);
+      this._elementClassNameModifier();
     });
 
     observer.observe(this.element, {
@@ -63,28 +59,42 @@ const FadeInModifier = Modifier.extend({
     this.element.classList.remove(FADE_IN_CSS_CLASS_NAME);
 
     this.observer && this.observer.disconnect();
+  },
+
+  _animateListener() {
+    let el = this.element;
+  
+    el.classList.remove(FADE_IN_CSS_CLASS_NAME);
+
+    el.style.animationDelay = '0ms';
+
+    this._removeEventListeners();
+  },
+
+  _elementClassNameModifier() {
+    this._setStyle();
+
+    let el = this.element;
+  
+    el.classList.add(FADE_IN_CSS_CLASS_NAME);
+  
+    let animationEvent = whichAnimationEvent();
+
+    el.addEventListener(animationEvent, this._animateListener.bind(this));
+  },
+
+  _setStyle() {
+    let el = this.element;
+
+    el.style.animationDelay = `${this.initialAnimationDelay}ms`;
+    el.style.animationTimingFunction = this.animationTimingFunction;
+    el.style.animationDuration = `${this.animationDuration}ms`;
+  },
+
+  _removeEventListeners() {
+    let animationEvent = whichAnimationEvent();
+    this.element.removeEventListener(animationEvent, this._animateListener, false);
   }
 });
-
-function init(el, {
-  initialAnimationDelay,
-  animationTimingFunction,
-  animationDuration
-}) {
-  el.style.animationDelay = `${initialAnimationDelay}ms`;
-  el.style.animationTimingFunction = animationTimingFunction || 'ease-in';
-  el.style.animationDuration = `${animationDuration}ms`;
-}
-
-function _elementClassNameModifier(el, delay = 0) {
-  el.classList.add(FADE_IN_CSS_CLASS_NAME);
-
-  let animationEvent = whichAnimationEvent();
-  el.addEventListener(animationEvent, () => {
-    el.style.animationDuration = `${delay}ms`;
-
-    el.classList.remove(FADE_IN_CSS_CLASS_NAME);
-  });
-}
 
 export default Modifier.modifier(FadeInModifier);
