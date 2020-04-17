@@ -4644,11 +4644,11 @@ ember-auto-import@^1.2.19:
     webpack "~4.28"
 
 ember-circleci@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/ember-circleci/-/ember-circleci-1.2.0.tgz#cb1c3e8d8e04d9e24d86e0662e0145b6f3181c7e"
-  integrity sha512-STdCAMhaeodXHnRrUyXRmeastnAUFQynajjVlq99MPhFA6rbkz+uTReUIO3EnxmYRApw82MhG53aCRPhGDArjA==
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/ember-circleci/-/ember-circleci-1.5.0.tgz#87190f3f1736bbf8932923a643c21741833c13f7"
+  integrity sha512-m/FPNQyfJNZPcaqvu8KbUXf/tXczZZwnytEPqnpzkQ/eUde92FW2bwHF2GB9zcoQFyCgCQlUNRSDscMHbR31OA==
   dependencies:
-    ember-cli-babel "^7.1.2"
+    ember-cli-babel "^7.7.3"
     ember-cli-string-utils "^1.1.0"
 
 ember-cli-addon-docs-yuidoc@^0.2.1:
@@ -4757,7 +4757,7 @@ ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.0.0-beta.7, ember-cli-babel@^6
     ember-cli-version-checker "^2.1.2"
     semver "^5.5.0"
 
-ember-cli-babel@^7.1.0, ember-cli-babel@^7.1.2, ember-cli-babel@^7.1.3, ember-cli-babel@^7.1.4, ember-cli-babel@^7.10.0, ember-cli-babel@^7.19.0:
+ember-cli-babel@^7.1.0, ember-cli-babel@^7.1.2, ember-cli-babel@^7.1.3, ember-cli-babel@^7.1.4, ember-cli-babel@^7.10.0, ember-cli-babel@^7.19.0, ember-cli-babel@^7.7.3:
   version "7.19.0"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-7.19.0.tgz#e6eddea18a867231fcf90a80689e92b98be9a63b"
   integrity sha512-HiWKuoyy35vGEr+iCw6gUnQ3pS5qslyTlKEDW8cVoMbvZNGYBgRxHed5nklVUh+BS74AwR9lsp25BTAagYAP9Q==
