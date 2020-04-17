@@ -1,6 +1,6 @@
 defaults: &defaults
   docker:
-    - image: circleci/node:10.14-browsers
+    - image: circleci/node:10.20-browsers
       environment:
         JOBS: 1
   working_directory: ~/ember-simple-animate
