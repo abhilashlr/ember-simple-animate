@@ -14,6 +14,7 @@ Router.map(function() {
       this.route('fade-in');
       this.route('slide-in');
       this.route('slide-out');
+      this.route('slide-in-out');
     });
   });
 
